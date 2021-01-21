@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { PrimaryButton, Spinner, SpinnerSize } from '@fluentui/react';
+import './Typing.css';
 
 const Typing = () => {
+  const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
 
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
@@ -20,17 +23,31 @@ const Typing = () => {
 
   }
 
+  const handleOnSubmit = () => {
+    setIsTypingEnd(true);
+  }
+
   return (
-    <div>
+    <div className="typing-container">
       <div>
         <p>
-          <span>typed text</span>
-          <span>current char</span>
+          <span>typed text - </span>
+          <span>current char - </span>
           <span>upcoming text</span>
         </p>
       </div>
       <div>
-
+        <PrimaryButton
+          className="button"
+          onClick={handleOnSubmit}
+          disabled={isTypingEnd}
+        >
+          {isTypingEnd ? (
+            <Spinner size={SpinnerSize.medium} />
+          ) : (
+              "Start analyzing"
+            )}
+        </PrimaryButton>
       </div>
     </div>
   );
