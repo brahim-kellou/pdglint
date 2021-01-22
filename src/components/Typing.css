@@ -1,0 +1,47 @@
+.typing-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-container {
+  margin-block-start: 0.4em;
+  margin-block-end: 0.4em
+}
+
+.progress-container {
+  width: 50%;
+  margin-block-start: 0.4em;
+  margin-block-end: 0.4em
+}
+
+.progress-container .progress-text {
+  margin-block-start: 0.4em;
+  margin-block-end: 0.4em
+}
+
+.button-container {
+  margin-block-start: 0.4em;
+  margin-block-end: 0.4em
+}
+
+.progress-indicator {
+}
+
+.current-char {
+  animation: cursor 1s infinite ease-in-out;
+}
+
+@keyframes cursor {
+  0% {
+    background-color: rgb(221,107,32, .3);
+  }
+  30% {
+    background-color: rgb(221,107,32, 1);
+  }
+}
+
+.button {
+  min-width: 140px;
+}
