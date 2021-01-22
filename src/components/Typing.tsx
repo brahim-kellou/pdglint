@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
 import { randomText } from '../data';
+import { PDGLINT_API_ENDPOINT } from '../config';
 import { DefaultButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
 import './Typing.css';
 
