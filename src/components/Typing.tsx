@@ -1,18 +1,13 @@
 import { useEffect, useState } from 'react';
-import faker from 'faker';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
+import { randomText } from '../data';
 import { DefaultButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
 import './Typing.css';
 
-const wordsList: string = new Array<string>(15)
-  .fill('')
-  .map(() => faker.random.word().toLowerCase())
-  .join(' ');
-
 const Typing = () => {
   const [outgoingText, setOutgoingText] = useState<string>('');
-  const [currentChar, setCurrentChar] = useState<string>(wordsList.charAt(0));
-  const [incomingText, setIncomingText] = useState<string>(wordsList.substring(1));
+  const [currentChar, setCurrentChar] = useState<string>(randomText.charAt(0));
+  const [incomingText, setIncomingText] = useState<string>(randomText.substring(1));
   const [progress, setProgress] = useState<number>(0);
   const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
@@ -34,7 +29,7 @@ const Typing = () => {
 
   useEffect(() => {
     setProgress(
-      outgoingText.length / wordsList.length
+      outgoingText.length / randomText.length
     );
   }, [outgoingText])
 
