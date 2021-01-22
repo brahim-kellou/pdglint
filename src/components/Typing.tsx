@@ -14,10 +14,6 @@ const Typing = () => {
   const [data, setData] = useState<any[]>([]);
   const [dates, setDates] = useState<any[]>([]);
 
-  console.log(outgoingText)
-  console.log(currentChar)
-  console.log(incomingText)
-
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
     document.addEventListener('keyup', onKeyUp);
@@ -85,6 +81,18 @@ const Typing = () => {
 
   const handleOnSubmit = () => {
     setIsTypingEnd(true);
+    const url = PDGLINT_API_ENDPOINT;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log(resp.result[0])
+      });
   }
 
   return (
