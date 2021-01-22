@@ -1,2 +1,1 @@
-yarn run build
-node server.js
+serve -s build
