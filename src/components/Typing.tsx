@@ -16,6 +16,7 @@ const Typing: React.FC<Props> = () => {
   const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [dates, setDates] = useState<any[]>([]);
+  const [result, setResult] = useState<boolean>(false);
 
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
@@ -32,6 +33,10 @@ const Typing: React.FC<Props> = () => {
       outgoingText.length / randomText.length
     );
   }, [outgoingText])
+
+  useEffect(() => {
+    console.log(result)
+  }, [result])
 
   const onKeyPress = ({ key }: any) => {
     const hand = getKeystrokeHand(key)
@@ -74,11 +79,13 @@ const Typing: React.FC<Props> = () => {
 
   const keystrokeLogger = (key: any) => {
     if (key === currentChar) {
-      setOutgoingText(outgoingText + currentChar);
+      let updatedOutgoingText = outgoingText + currentChar;
+      let updatedCurrentChar = incomingText.charAt(0)
+      let updatedIncomingText = incomingText.substring(1)
 
-      setCurrentChar(incomingText.charAt(0));
-
-      setIncomingText(incomingText.substring(1));
+      setOutgoingText(updatedOutgoingText);
+      setCurrentChar(updatedCurrentChar);
+      setIncomingText(updatedIncomingText);
     }
   };
 
@@ -94,7 +101,7 @@ const Typing: React.FC<Props> = () => {
     })
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp.result[0])
+        setResult(resp.result[0])
       });
   }
 
