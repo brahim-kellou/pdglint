@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
 import { randomText } from '../data';
 import { PDGLINT_API_ENDPOINT } from '../config';
 import { DefaultButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
 import './Typing.css';
 
-const Typing = () => {
+interface Props {
+}
+
+const Typing: React.FC<Props> = () => {
   const [outgoingText, setOutgoingText] = useState<string>('');
   const [currentChar, setCurrentChar] = useState<string>(randomText.charAt(0));
   const [incomingText, setIncomingText] = useState<string>(randomText.substring(1));
