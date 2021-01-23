@@ -4,6 +4,7 @@ import fetchData from './fetchData';
 import { randomText } from '../data';
 import { PDGLINT_API_ENDPOINT } from '../config';
 import { PrimaryButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
+import logo from '../logo.svg';
 import './Typing.css';
 
 interface Props {
@@ -116,7 +117,7 @@ const Typing: React.FC<Props> = () => {
       )
       :
       (
-        <h5 className="pd-not-detected">Parkinson disease not detected</h5>
+        <h5 className="pd-not-detected">{`You're safe! Parkinson disease not detected`}</h5>
       )
   )
 
@@ -125,6 +126,7 @@ const Typing: React.FC<Props> = () => {
       {
         !isTypingEnd && (
           <div className="typing-container">
+            <img src={logo} className="logo" alt="logo" />
             <div className="text-container">
               <p className="text">
                 <span>{outgoingText}</span>

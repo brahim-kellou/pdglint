@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
 .typing-container {
   width: 50%;
   display: flex;
@@ -47,10 +52,10 @@
 
 @keyframes cursor {
   0% {
-    background-color: rgb(221,107,32, .3);
+    background-color: rgb(9,211,172, .3);
   }
   30% {
-    background-color: rgb(221,107,32, 1);
+    background-color: rgb(9,211,172, 1);
   }
 }
 
