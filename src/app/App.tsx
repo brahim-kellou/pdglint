@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { lightTheme, darkTheme } from '../styles';
+import { darkTheme } from '../styles';
 import Typing from '../components/Typing';
 
 function App() {
