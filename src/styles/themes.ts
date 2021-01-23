@@ -1,0 +1,53 @@
+export const lightTheme = {
+  palette: {
+    themePrimary: '#dd6b20',
+    themeLighterAlt: '#fef8f5',
+    themeLighter: '#fae5d7',
+    themeLight: '#f5cfb6',
+    themeTertiary: '#eba272',
+    themeSecondary: '#e27b37',
+    themeDarkAlt: '#c8611c',
+    themeDark: '#a95218',
+    themeDarker: '#7c3c11',
+    neutralLighterAlt: '#faf9f8',
+    neutralLighter: '#f3f2f1',
+    neutralLight: '#edebe9',
+    neutralQuaternaryAlt: '#e1dfdd',
+    neutralQuaternary: '#d0d0d0',
+    neutralTertiaryAlt: '#c8c6c4',
+    neutralTertiary: '#a19f9d',
+    neutralSecondary: '#605e5c',
+    neutralPrimaryAlt: '#3b3a39',
+    neutralPrimary: '#323130',
+    neutralDark: '#201f1e',
+    black: '#000000',
+    white: '#ffffff',
+  }
+};
+
+export const darkTheme = {
+  palette: {
+    themePrimary: '#dd6b20',
+    themeLighterAlt: '#fef8f5',
+    themeLighter: '#fae5d7',
+    themeLight: '#f5cfb6',
+    themeTertiary: '#eba272',
+    themeSecondary: '#e27b37',
+    themeDarkAlt: '#c8611c',
+    themeDark: '#a95218',
+    themeDarker: '#7c3c11',
+    neutralLighterAlt: '#1e1e1e',
+    neutralLighter: '#282828',
+    neutralLight: '#363636',
+    neutralQuaternaryAlt: '#404040',
+    neutralQuaternary: '#474747',
+    neutralTertiaryAlt: '#666666',
+    neutralTertiary: '#c8c8c8',
+    neutralSecondary: '#d0d0d0',
+    neutralPrimaryAlt: '#dadada',
+    neutralPrimary: '#ffffff',
+    neutralDark: '#f4f4f4',
+    black: '#f8f8f8',
+    white: '#141414',
+  }
+}
