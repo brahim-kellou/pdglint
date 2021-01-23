@@ -1,3 +1,3 @@
-# PDGlint
+# PDglint
 
-Link to the app: (https://pdglint.azurewebsites.net)[https://pdglint.azurewebsites.net]
+Link to the app: (PDglint)[https://pdglint.azurewebsites.net]
