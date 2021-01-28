@@ -16,7 +16,7 @@ const Typing: React.FC<Props> = () => {
   const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [dates, setDates] = useState<any[]>([]);
-  const [result, setResult] = useState<boolean>(false);
+  const [result, setResult] = useState(false);
 
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
