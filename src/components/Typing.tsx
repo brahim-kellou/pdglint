@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
+import fetchData from './fetchData';
 import { randomText } from '../data';
 import { PDGLINT_API_ENDPOINT } from '../config';
 import { PrimaryButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
@@ -16,9 +17,9 @@ const Typing: React.FC<Props> = () => {
   const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [dates, setDates] = useState<any[]>([]);
+  const [isResultLoading, setIsResultLoading] = useState<boolean>(false);
+  const [isResultReady, setIsResultReady] = useState<boolean>(false);
   const [result, setResult] = useState<boolean>(false);
-  const [isResult, setIsResult] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
@@ -89,7 +90,7 @@ const Typing: React.FC<Props> = () => {
 
   const handleOnSubmit = () => {
     setIsTypingEnd(true);
-    setIsLoading(true);
+    setIsResultLoading(true);
     const url = PDGLINT_API_ENDPOINT;
     fetch(url, {
       method: 'POST',
@@ -100,11 +101,24 @@ const Typing: React.FC<Props> = () => {
     })
       .then(resp => resp.json())
       .then(resp => {
-        setIsResult(true);
-        setResult(resp.result[0])
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsResultLoading(false);
+          setIsResultReady(true);
+          setResult(resp.result[0])
+        }, 2000)
       });
   }
+
+  const renderResponse = (result: boolean) => (
+    result ?
+      (
+        <h5 className="pd-detected">Parkinson disease detected</h5>
+      )
+      :
+      (
+        <h5 className="pd-not-detected">Parkinson disease not detected</h5>
+      )
+  )
 
   return (
     <div className="container">
@@ -112,7 +126,7 @@ const Typing: React.FC<Props> = () => {
         !isTypingEnd && (
           <div className="typing-container">
             <div className="text-container">
-              <p>
+              <p className="text">
                 <span>{outgoingText}</span>
                 <span className="current-char">{currentChar}</span>
                 <span>{incomingText}</span>
@@ -135,16 +149,17 @@ const Typing: React.FC<Props> = () => {
         )
       }
       {
-        isLoading && (
+        isResultLoading && (
           <div>
             <Spinner size={SpinnerSize.large} />
+            <h5>Getting results ..</h5>
           </div>
         )
       }
       {
-        isResult && (
+        isResultReady && (
           <div className="result-container">
-            <h1>{String(result)}</h1>
+            {renderResponse(result)}
           </div>
         )
       }
