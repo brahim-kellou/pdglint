@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
-import fetchData from './fetchData';
 import { randomText } from '../data';
 import { PDGLINT_API_ENDPOINT } from '../config';
 import { PrimaryButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
