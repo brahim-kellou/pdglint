@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getKeystrokeHand, getDate, getTimestamp } from '../utils';
 import { randomText } from '../data';
 import { PDGLINT_API_ENDPOINT } from '../config';
-import { DefaultButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
+import { PrimaryButton, Spinner, SpinnerSize, ProgressIndicator } from '@fluentui/react';
 import './Typing.css';
 
 interface Props {
@@ -16,7 +16,9 @@ const Typing: React.FC<Props> = () => {
   const [isTypingEnd, setIsTypingEnd] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
   const [dates, setDates] = useState<any[]>([]);
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState<boolean>(false);
+  const [isResult, setIsResult] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     document.addEventListener('keypress', onKeyPress);
@@ -33,10 +35,6 @@ const Typing: React.FC<Props> = () => {
       outgoingText.length / randomText.length
     );
   }, [outgoingText])
-
-  useEffect(() => {
-    console.log(result)
-  }, [result])
 
   const onKeyPress = ({ key }: any) => {
     const hand = getKeystrokeHand(key)
@@ -91,6 +89,7 @@ const Typing: React.FC<Props> = () => {
 
   const handleOnSubmit = () => {
     setIsTypingEnd(true);
+    setIsLoading(true);
     const url = PDGLINT_API_ENDPOINT;
     fetch(url, {
       method: 'POST',
@@ -101,36 +100,54 @@ const Typing: React.FC<Props> = () => {
     })
       .then(resp => resp.json())
       .then(resp => {
+        setIsResult(true);
         setResult(resp.result[0])
+        setIsLoading(false);
       });
   }
 
   return (
-    <div className="typing-container">
-      <div className="text-container">
-        <p>
-          <span>{outgoingText}</span>
-          <span className="current-char">{currentChar}</span>
-          <span>{incomingText}</span>
-        </p>
-      </div>
-      <div className="progress-container">
-        <h5 className="progress-text">Progress: {(progress * 100).toFixed(2)} %</h5>
-        <ProgressIndicator className="progress-indicator" percentComplete={progress} />
-      </div>
-      <div className="button-container">
-        <DefaultButton
-          className="button"
-          onClick={handleOnSubmit}
-          disabled={isTypingEnd || (progress < 1)}
-        >
-          {isTypingEnd ? (
-            <Spinner size={SpinnerSize.medium} />
-          ) : (
-              "Start analyzing"
-            )}
-        </DefaultButton>
-      </div>
+    <div className="container">
+      {
+        !isTypingEnd && (
+          <div className="typing-container">
+            <div className="text-container">
+              <p>
+                <span>{outgoingText}</span>
+                <span className="current-char">{currentChar}</span>
+                <span>{incomingText}</span>
+              </p>
+            </div>
+            <div className="progress-container">
+              <h5 className="progress-text">Progress: {(progress * 100).toFixed(2)} %</h5>
+              <ProgressIndicator className="progress-indicator" percentComplete={progress} />
+            </div>
+            <div className="button-container">
+              <PrimaryButton
+                className="button"
+                onClick={handleOnSubmit}
+                disabled={isTypingEnd || (progress < 1)}
+              >
+                Start analyzing
+              </PrimaryButton>
+            </div>
+          </div>
+        )
+      }
+      {
+        isLoading && (
+          <div>
+            <Spinner size={SpinnerSize.large} />
+          </div>
+        )
+      }
+      {
+        isResult && (
+          <div className="result-container">
+            <h1>{String(result)}</h1>
+          </div>
+        )
+      }
     </div>
   );
 }
