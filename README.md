@@ -27,7 +27,7 @@ Tappy Keystroke Data: [https://physionet.org/content/tappy/1.0.0/](https://physi
 
 We automatically trained and tuned a model for the dataset and target metric using Azure AutoML that tests multiple algorithms and hyper-parameters in parallel to generate the most suitable model.
 
-![Azure AutoML Process](assets/images/azure-automl-process.gif)
+![Azure AutoML Process](assets/images/azure-automl-process.png)
 
 ## Challenges we ran into
 
