@@ -29,6 +29,12 @@ We automatically trained and tuned a model for the dataset and target metric usi
 
 ![Azure AutoML Process](assets/images/azure-automl-process.png)
 
+### Azure Functions
+
+Azure Functions allowed us to perform data pre-treatment which significintly reduce the cost and move a bottle neck out of the backend.
+
+![Azure Functions](assets/images/azure-functions.png)
+
 ## Challenges we ran into
 
 - Cleaning the dataset before training it with Azure AutoML.
