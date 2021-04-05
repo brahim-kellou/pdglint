@@ -13,9 +13,9 @@ The web application will prompt random words to the user who will type them one 
 
 ### Software architecture
 
-Our app is built on top of Azure Machine Learning for creating the model that predicts the presence of Parkinson's disease. We used ReactJS for the frontend to create a friendly user interface that makes it clean. We used Azure Functions to make data pretreatment for cost efficiency. We also used C# and ASP.NET to create an API that links the frontend with Azure Functions, the database as well as our deployed model.
+Our app is built on top of Azure Machine Learning for creating the model that predicts the presence of Parkinson's disease. We used ReactJS for the frontend to create a friendly user interface that makes it clean. We used Azure Functions to make data pretreatment for cost efficiency. We also used Python and FastAPI to create an API that links the frontend with Azure Functions, the database as well as our deployed model.
 
-![Software architecture](assets/images/pdglint-architecture.png)
+![Software architecture](assets/images/project-architecture.png)
 
 ### Dataset
 
@@ -41,9 +41,9 @@ Creating a minimum viable product that solves a healthcare problem.
 ## What we learned
 
 - Creating a model with Azure AutoML!
-- Using ASP.NET and C#, which is fast to code and easy to use :D
+- Using FastAPI, which is fast to code and easy to use :D
 - Trying Fluent UI to stylize the web app, and setting a dark theme ;)
-- Using Unicorn for the production (deploying the backend which is built with ASP.NET in Azure).
+- Using Unicorn for the production (deploying the backend which is built with FastAPI in Azure).
 
 ![tech-stack](assets/images/tech-stack.png)
 
