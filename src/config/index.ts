@@ -1,5 +1,5 @@
-const PROD_PDGLINT_API_ENDPOINT = "https://pdglint-api.azurewebsites.net"
-const DEV_PDGLINT_API_ENDPOINT = "https://pdglint-api.azurewebsites.net"
+const PROD_PDGLINT_API_ENDPOINT = "https://pdglint-server.azurewebsites.net"
+const DEV_PDGLINT_API_ENDPOINT = "https://pdglint-server.azurewebsites.net"
 // const DEV_PDGLINT_API_ENDPOINT = "https://localhost:8000"
 
 const _DEV_ = !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
