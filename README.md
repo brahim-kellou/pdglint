@@ -15,7 +15,7 @@ The web application will prompt random words to the user who will type them one 
 
 Our app is built on top of Azure Machine Learning for creating the model that predicts the presence of Parkinson's disease. We used ReactJS for the frontend to create a friendly user interface that makes it clean. We used Azure Functions to make data pretreatment for cost efficiency. We also used C# and ASP.NET to create an API that links the frontend with Azure Functions, the database as well as our deployed model.
 
-![Software architecture](assets/images/architecture.png)
+![Software architecture](assets/images/pdglint-architecture.png)
 
 ### Dataset
 
